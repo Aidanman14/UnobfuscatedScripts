@@ -1,0 +1,25 @@
+local players = game:GetService("Players")
+local runService = game:GetService("RunService")
+
+local enemyTeam = game:GetService("Workspace").Players:GetChildren()[1]
+
+local function applyHightlight()
+    for _, v in pairs(enemyTeam:GetDescendants()) do
+        if v.ClassName == "Model" then
+            if not v:IsA("Highlight") then
+                local hightlight = Instance.new("Highlight", v)
+                hightlight.FillColor = Color3.new(255, 0, 0)
+                hightlight.FillTransparency = 0.8
+            end
+        end
+    end
+end
+
+runService.Stepped:Connect(function()
+    applyHightlight()
+    task.wait(.1)
+end)
+
+players.PlayerAdded:Connect(function()
+	applyHightlight()
+end)
