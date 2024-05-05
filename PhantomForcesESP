@@ -19,7 +19,3 @@ runService.Stepped:Connect(function()
     applyHightlight()
     task.wait(.1)
 end)
-
-players.PlayerAdded:Connect(function()
-	applyHightlight()
-end)
